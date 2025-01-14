@@ -7,6 +7,7 @@ import numpy as np
 
 # Make one method to decode the barcode
 def barcode_reader(image):
+    name = image.split("\\")[-1]
     # read the image in numpy array using cv2
     img = cv2.imread(image)
 
@@ -15,7 +16,7 @@ def barcode_reader(image):
 
     # If not detected then print the message 
     if not detected_barcodes:
-        print(f"Barcode Not Detected or your barcode is blank/corrupted! File name: {image}")
+        print(f"Barcode Not Detected or your barcode is blank/corrupted! File name: {name}")
     else:
 
         # Traverse through all the detected barcodes in image
@@ -27,7 +28,7 @@ def barcode_reader(image):
             top_left = (x - 100, y - 100)
             bottom_right = (x + w + 100, y + h + 100)
 
-            cv2.imwrite(f"ProcessResults/barcoder{i}{image.split("/")[-1]}", img[top_left[1]:bottom_right[1], top_left[0]:bottom_right[0]])
+            cv2.imwrite(f"ProcessResults/barcoder{i}{name}", img[top_left[1]:bottom_right[1], top_left[0]:bottom_right[0]])
             
             # Put the rectangle in image using  
             # cv2 to highlight the barcode 
@@ -42,7 +43,7 @@ def barcode_reader(image):
             else:
                 pass    #TODO find digits
 
-    cv2.imwrite(f"ProcessResults/barcoder{image.split("/")[-1]}", img)
+    cv2.imwrite(f"ProcessResults/barcoder{name}", img)
     cv2.destroyAllWindows()
 
 
