@@ -1,9 +1,9 @@
 from paddleocr import PaddleOCR,draw_ocr
 import json, re
 ocr = PaddleOCR(lang='en') # need to run only once to download and load model into memory
-img_path = 'test6.jpg'
+img_path = 'samples/test16.jpg'
 result = ocr.ocr(img_path, cls=False)
-regex = r'^[N№]?[\d.]{6,}$'
+regex = r'^[N№]?[\d.,]{6,}$'
 
 filtered = list(filter(lambda x: x[-1][-1] > 0.8 and re.match(regex, x[-1][0]) is not None, result[0]))
 
