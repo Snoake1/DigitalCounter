@@ -4,7 +4,7 @@ from barcodeReader import barcode_reader
 from ultralytics import YOLO
 
 
-if __name__ == "__main__":
+def main():
     parser = argparse.ArgumentParser(description='Получение данных счетчика по изображение')
     parser.add_argument('file_name', type=str, help='Имя файла, где находится изображение')
 
@@ -25,10 +25,14 @@ if __name__ == "__main__":
         elif cls == 1:
             num_roi = img[y1:y2, x1:x2]
 
-    value = 0  #TODO Получать значение на дисплее
+    value = 0  # TODO Получать значение на дисплее
     barcode_value = barcode_reader(num_roi)
     if barcode_value.isdigit():
         print(f"Заводской номер: {barcode_value}")
     else:
-        #TODO Отображать номер, полученный OCR
+        # TODO Отображать номер, полученный OCR
         print(f"Не удалось прочитать заводской номер")
+
+
+if __name__ == "__main__":
+    main()
