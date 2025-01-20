@@ -21,6 +21,7 @@ ocr = PaddleOCR(lang='en') # need to run only once to download and load model in
 
 def filter_res(result, regex):
     return list(filter(lambda x: x[-1][-1] > 0.8 and re.match(regex, x[-1][0]) is not None, result))
+    # return result
 
 def predict_and_draw(im, outfile):
     result = ocr.ocr(im, cls=False)[0]
