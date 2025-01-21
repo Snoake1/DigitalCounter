@@ -26,7 +26,8 @@ def predict_and_draw(im):
 
     return result[0][-1][0]
 
-def apply_filter(image):
+
+def apply_filter(image, show):
     # Конвертируем в градации серого
     gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
     print(gray.shape)
@@ -50,9 +51,10 @@ def apply_filter(image):
     kernel = cv2.getStructuringElement(cv2.MORPH_RECT, (3, 3))
     processed = cv2.morphologyEx(thresh, cv2.MORPH_CLOSE, kernel, iterations=2)
     # processed = thresh
-    plt.figure()
-    plt.title("Морфологическая обработка")
-    plt.imshow(processed, cmap='gray')
+    if show:
+        plt.figure()
+        plt.title("Морфологическая обработка")
+        plt.imshow(processed, cmap='gray')
 
     # Ищем контуры
     contours, _ = cv2.findContours(processed, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
@@ -69,6 +71,7 @@ def apply_filter(image):
     plt.show()
 
     return cv2.cvtColor(processed, cv2.COLOR_GRAY2BGR)
+
 
 def main():
     parser = argparse.ArgumentParser(description='Получение данных счетчика по изображение')
@@ -91,7 +94,7 @@ def main():
         elif cls == 1:
             num_roi = img[y1:y2, x1:x2]
 
-    disp_proc = apply_filter(disp_roi)
+    disp_proc = apply_filter(disp_roi, True)
     print(disp_roi.shape, disp_proc.shape)
     value = predict_and_draw(disp_proc)
     print(value)

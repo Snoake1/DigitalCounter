@@ -2,6 +2,8 @@ import os
 import argparse
 import importlib
 
+import cv2
+
 
 def main():
     # Настройка парсера аргументов
@@ -20,13 +22,14 @@ def main():
 
         if function:
             # Перебираем файлы в указанном каталоге и вызываем функцию
-            directory = "../Dataset"  # Убедитесь, что этот путь существует
+            directory = "bars"  # Убедитесь, что этот путь существует
             for filename in os.listdir(directory):
                 file_path = os.path.join(directory, filename)  # Полный путь к файлу
-                if filename.endswith(".jpg") or filename.endswith(".png"):
+                if filename.endswith(".jpg") or filename.endswith(".png") or filename.endswith(".jfif"):
                     # Вызываем функцию с полным путем к файлу
                     try:
-                        function(file_path)
+                        img = cv2.imread(file_path)
+                        print(function(img))
                     except Exception as e:
                         print(f"Произошла ошибка: {e}")
                         continue
