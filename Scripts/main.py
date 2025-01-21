@@ -91,7 +91,6 @@ def main():
         elif cls == 1:
             num_roi = img[y1:y2, x1:x2]
 
-
     disp_proc = apply_filter(disp_roi)
     print(disp_roi.shape, disp_proc.shape)
     value = predict_and_draw(disp_proc)
@@ -101,7 +100,7 @@ def main():
     if barcode_value.isdigit():
         print(f"Заводской номер: {barcode_value}")
     else:
-        #TODO Отображать номер, полученный OCR
+        # TODO Отображать номер, полученный OCR
         print(f"Не удалось прочитать заводской номер")
 
 
