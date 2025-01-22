@@ -103,8 +103,11 @@ def main():
     if barcode_value.isdigit():
         print(f"Заводской номер: {barcode_value}")
     else:
-        # TODO Отображать номер, полученный OCR
-        print(f"Не удалось прочитать заводской номер")
+        barcode_value = predict_and_draw(num_roi)
+        if barcode_value.isdigit():
+            print(f"Заводской номер: {barcode_value}")
+        else:
+            print("Не удалось распознать номер")
 
 
 if __name__ == "__main__":

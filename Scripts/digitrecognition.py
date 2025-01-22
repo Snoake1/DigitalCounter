@@ -4,7 +4,7 @@ from paddleocr import PaddleOCR, draw_ocr
 from PIL import Image
 import re
 
-model = YOLO("yolo.pt")
+model = YOLO("../yolo.pt")
 img = cv2.imread("../samples/test5.jpg")
 res = model.predict(img)[0]
 disp_roi = None
