@@ -22,7 +22,7 @@ if not os.path.exists("./disps"):
 if not os.path.exists("./bars"):
     os.makedirs("./bars")
 
-for file in os.listdir(directory)[:100]:
+for file in os.listdir(directory):
     filename = os.fsdecode(file)
     img = cv2.imread(args.file_name + "\\" + filename)
     last_name = filename.split('\\')[-1]

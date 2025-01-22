@@ -4,6 +4,7 @@ ProcessResults
 Dataset
 bars
 disps
+disps_train
 .venv
 runs
 result.jpg
@@ -12,3 +13,13 @@ res_disp.jpg
 res_num.jpg
 fil_bars
 fil_disps
+*.jpg
+*.jfif
+*.webp
+*.zip
+*.rar
+annotations*
+*.txt
+*.csv
+*.yml
+*.json
