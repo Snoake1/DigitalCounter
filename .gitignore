@@ -5,6 +5,11 @@ Dataset
 bars
 disps
 disps_train
+bars_full
+disps_full
+disps_val
+val_bars
+val_disps
 .venv
 runs
 result.jpg
