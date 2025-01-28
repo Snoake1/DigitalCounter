@@ -15,7 +15,7 @@ args = parser.parse_args()
 name = args.file_name.split("\\")[-1]
 # read the image in numpy array using cv2
 directory = os.fsencode(args.file_name)
-model = YOLO("../yolo.pt")
+model = YOLO("../models/yolo.pt")
 
 if not os.path.exists("./disps_full"):
     os.makedirs("./disps_full")
