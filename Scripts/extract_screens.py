@@ -17,10 +17,10 @@ name = args.file_name.split("\\")[-1]
 directory = os.fsencode(args.file_name)
 model = YOLO("../yolo.pt")
 
-if not os.path.exists("./disps"):
-    os.makedirs("./disps")
-if not os.path.exists("./bars"):
-    os.makedirs("./bars")
+if not os.path.exists("./disps_full"):
+    os.makedirs("./disps_full")
+if not os.path.exists("./bars_full"):
+    os.makedirs("./bars_full")
 
 for file in os.listdir(directory):
     filename = os.fsdecode(file)
@@ -39,6 +39,6 @@ for file in os.listdir(directory):
             num_roi = img[y1:y2, x1:x2]
 
     if disp_roi is not None:
-        cv2.imwrite("./disps/" + last_name, disp_roi)
+        cv2.imwrite("./disps_full/" + last_name, disp_roi)
     if num_roi is not None:
-        cv2.imwrite("./bars/" + last_name, num_roi)
+        cv2.imwrite("./bars_full/" + last_name, num_roi)

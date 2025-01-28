@@ -5,7 +5,7 @@ images = tree.findall("image")
 
 
 def get_csv_from_xml(attr='Display'):
-    with open("prodid_train.csv", "w+", encoding="utf-8") as f:
+    with open("labels_full.csv", "w+", encoding="utf-8") as f:
         for i in images:
             name = i.attrib['name']
             if i.attrib['subset'] != 'Train':
@@ -16,6 +16,3 @@ def get_csv_from_xml(attr='Display'):
                 text = p[0].text
                 if text != "10000":
                     f.write(f"{name}, {text}\n")
-
-
-get_csv_from_xml("ProdId")
